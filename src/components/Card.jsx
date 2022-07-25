@@ -27,7 +27,6 @@ class Card extends Component {
           cardTrunfo === true && <p data-testid="trunfo-card">Super Trunfo</p>
         }
       </>
-
     );
   }
 }
