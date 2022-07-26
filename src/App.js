@@ -8,9 +8,9 @@ class App extends React.Component {
     this.state = {
       cardName: '',
       cardDescription: '',
-      cardAttr1: '',
-      cardAttr2: '',
-      cardAttr3: '',
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
@@ -20,7 +20,7 @@ class App extends React.Component {
     };
   }
 
-  validateButton = (() => {
+  validateButton = () => {
     const {
       cardName,
       cardDescription,
@@ -37,22 +37,22 @@ class App extends React.Component {
     const numCardAttr2 = parseInt(cardAttr2, 10);
     const numCardAttr3 = parseInt(cardAttr3, 10);
 
-    const verfifySum = numCardAttr1 + numCardAttr2 + numCardAttr3 <= sumAttrNumber;
+    const verifySum = numCardAttr1 + numCardAttr2 + numCardAttr3 <= sumAttrNumber;
     const verifyMaxAttr = numCardAttr1 <= maxAttrNumber
     && numCardAttr2 <= maxAttrNumber
     && numCardAttr3 <= maxAttrNumber;
-    const verifyMinAttr = cardAttr1 >= 0 && cardAttr2 >= 0 && cardAttr3 >= 0;
-    const verifyed = verfifySum && verifyMaxAttr && verifyMinAttr;
+    const verifyMinAttr = numCardAttr1 >= 0 && numCardAttr2 >= 0 && numCardAttr3 >= 0;
+    const verified = verifySum && verifyMaxAttr && verifyMinAttr;
 
     if (cardName.length > 0
       && cardDescription.length > 0
       && cardImage.length > 0
-      && verifyed) {
+      && verified) {
       this.setState({ isSaveButtonDisabled: false });
     } else {
       this.setState({ isSaveButtonDisabled: true });
     }
-  });
+  };
 
   onInputChange = ({ target }) => {
     const { name } = target;
@@ -96,7 +96,9 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
-    }));
+    }), () => {
+      if (cardTrunfo) this.setState({ hasTrunfo: true });
+    });
   }
 
   render() {
