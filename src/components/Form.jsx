@@ -132,7 +132,6 @@ class Form extends Component {
                 checked={ cardTrunfo }
                 onChange={ onInputChange }
                 data-testid="trunfo-input"
-                hasTrunfo={ hasTrunfo }
               /> : <p>Você já tem um Super Trunfo em seu baralho</p>
             }
             Super Trybe Trunfo
