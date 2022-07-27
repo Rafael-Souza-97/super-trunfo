@@ -1,7 +1,8 @@
 import React from 'react';
+import { nanoid } from 'nanoid';
 import Form from './components/Form';
 import Card from './components/Card';
-// import Delete from './components/Delete';
+import Delete from './components/Delete';
 import './App.css';
 
 class App extends React.Component {
@@ -103,6 +104,20 @@ class App extends React.Component {
     });
   }
 
+  deleteButton = (cardName) => {
+    const { arrayOfCards, cardTrunfo } = this.state;
+    const filt = arrayOfCards.filter((element) => element.name !== cardName);
+    if (cardTrunfo === false) {
+      this.setState({
+        hasTrunfo: false,
+        arrayOfCards: filt,
+      });
+    }
+    this.setState({
+      arrayOfCards: filt,
+    });
+  }
+
   render() {
     const {
       cardName,
@@ -157,20 +172,28 @@ class App extends React.Component {
         <div className="cards">
           {
             arrayOfCards.map((cards) => (
-              <Card
-                className="cards"
-                key={ cards.name }
-                cardName={ cards.name }
-                cardDescription={ cards.description }
-                cardAttr1={ cards.attr1 }
-                cardAttr2={ cards.attr2 }
-                cardAttr3={ cards.attr3 }
-                cardImage={ cards.image }
-                cardRare={ cards.rare }
-                cardTrunfo={ cards.trunfo }
-              />
+              <div key={ nanoid() }>
+                <Card
+                  className="cards"
+                  key={ cards.name }
+                  cardName={ cards.name }
+                  cardDescription={ cards.description }
+                  cardAttr1={ cards.attr1 }
+                  cardAttr2={ cards.attr2 }
+                  cardAttr3={ cards.attr3 }
+                  cardImage={ cards.image }
+                  cardRare={ cards.rare }
+                  cardTrunfo={ cards.trunfo }
+                  onDeleteButtonClick={ this.onDeleteButtonClick }
+                />
+                <Delete
+                  deleteButton={ this.deleteButton }
+                  cardName={ cards.name }
+                />
+              </div>
             ))
           }
+
         </div>
       </>
     );
