@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import '../App.css';
 
 class Form extends Component {
   render() {
@@ -19,7 +20,7 @@ class Form extends Component {
     } = this.props;
 
     return (
-      <>
+      <div className="aaaa">
         <div className="formNome">
           <label htmlFor="textNome">
             Nome:
@@ -150,7 +151,7 @@ class Form extends Component {
             Salvar
           </button>
         </div>
-      </>
+      </div>
     );
   }
 }
