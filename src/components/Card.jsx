@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import '../App.css';
 
 class Card extends Component {
   render() {
@@ -15,7 +16,7 @@ class Card extends Component {
     } = this.props;
 
     return (
-      <>
+      <div className="cardDrop">
         <p data-testid="name-card">{ cardName }</p>
         <img src={ cardImage } data-testid="image-card" alt={ cardName } />
         <p data-testid="description-card">{ cardDescription }</p>
@@ -26,7 +27,7 @@ class Card extends Component {
         {
           cardTrunfo === true && <p data-testid="trunfo-card">Super Trunfo</p>
         }
-      </>
+      </div>
     );
   }
 }

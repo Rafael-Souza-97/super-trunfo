@@ -2,6 +2,7 @@ import React from 'react';
 import { nanoid } from 'nanoid';
 import Form from './components/Form';
 import Card from './components/Card';
+// import Filter from './components/Filter';
 import Delete from './components/Delete';
 import './App.css';
 
@@ -20,6 +21,7 @@ class App extends React.Component {
       hasTrunfo: false,
       isSaveButtonDisabled: true,
       arrayOfCards: [],
+      // filtSearch: [],
     };
   }
 
@@ -111,12 +113,22 @@ class App extends React.Component {
       this.setState({
         hasTrunfo: false,
         arrayOfCards: filt,
+        // filtSearch: filt,
       });
     }
     this.setState({
       arrayOfCards: filt,
     });
   }
+
+  // filterSearch = ({ target }) => {
+  //   const { arrayOfCards } = this.state;
+  //   const cardFilter = arrayOfCards
+  //     .filter((item) => item.name.includes(target.value));
+  //   console.log(cardFilter);
+  //   this.setState({ filtSearch: cardFilter });
+  //   if (!target.value) this.setState({ filtSearch: [] });
+  // }
 
   render() {
     const {
@@ -131,6 +143,7 @@ class App extends React.Component {
       hasTrunfo,
       isSaveButtonDisabled,
       arrayOfCards,
+      // filtSearch,
     } = this.state;
 
     return (
@@ -193,7 +206,6 @@ class App extends React.Component {
               </div>
             ))
           }
-
         </div>
       </>
     );
@@ -201,3 +213,36 @@ class App extends React.Component {
 }
 
 export default App;
+
+// {/* <div>
+//           <h4> Filtro de Busca</h4>
+//           <Filter
+//             filterSearch={ this.filterSearch }
+//           />
+//           {
+//             !filtSearch.length ? '' : filtSearch.map((cards) => (
+//               <div
+//                 className="cardSpace"
+//                 key={ nanoid() }
+//               >
+//                 <Card
+//                   className="cards"
+//                   key={ cards.name }
+//                   cardName={ cards.name }
+//                   cardDescription={ cards.description }
+//                   cardAttr1={ cards.attr1 }
+//                   cardAttr2={ cards.attr2 }
+//                   cardAttr3={ cards.attr3 }
+//                   cardImage={ cards.image }
+//                   cardRare={ cards.rare }
+//                   cardTrunfo={ cards.trunfo }
+//                   onDeleteButtonClick={ this.onDeleteButtonClick }
+//                 />
+//                 <Delete
+//                   deleteButton={ this.deleteButton }
+//                   cardName={ cards.name }
+//                 />
+//               </div>
+//             ))
+//           }
+//         </div> */}

@@ -1,3 +1,7 @@
+body {
+  background-color: rgb(246, 246, 246);
+}
+
 .formPreview {
   display: flex;
 }
@@ -27,14 +31,14 @@
   min-width: 25%;
 }
 
-.cards {
+.cardSpace {
   align-items: center;
-  border: 3px solid black;
+  border: 1px solid black;
   display: flex;
   flex-direction: column;
-  margin: 25px;
-  margin-bottom: 25px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 20px;
+  margin-bottom: 20px;
+  margin-left: 40%;
+  margin-right: 40%;
   min-width: 25%;
 }
