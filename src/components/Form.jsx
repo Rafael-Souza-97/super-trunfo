@@ -14,7 +14,7 @@ class Form extends Component {
       cardRare,
       cardTrunfo,
       hasTrunfo,
-      isSaveButtonDisabled,
+      isLoginButtonDisabled,
       onInputChange,
       onSaveButtonClick,
     } = this.props;
@@ -52,7 +52,7 @@ class Form extends Component {
 
         <div className="formAtributo1">
           <label htmlFor="number1">
-            Atributo 1:
+            Potência:
             <input
               type="number"
               name="cardAttr1"
@@ -66,7 +66,7 @@ class Form extends Component {
 
         <div className="formAtributo2">
           <label htmlFor="number2">
-            Atributo 2:
+            Design:
             <input
               type="number"
               name="cardAttr2"
@@ -80,7 +80,7 @@ class Form extends Component {
 
         <div className="formAtributo3">
           <label htmlFor="number3">
-            Atributo 3:
+            Segurança:
             <input
               type="number"
               name="cardAttr3"
@@ -135,7 +135,7 @@ class Form extends Component {
                 data-testid="trunfo-input"
               /> : <p>Você já tem um Super Trunfo em seu baralho</p>
             }
-            Super Trybe Trunfo
+            Super Trunfo
           </label>
         </div>
 
@@ -144,7 +144,7 @@ class Form extends Component {
             type="submit"
             value="Salvar"
             name="isSaveButtonDisabled"
-            disabled={ isSaveButtonDisabled }
+            disabled={ isLoginButtonDisabled }
             onClick={ onSaveButtonClick }
             data-testid="save-button"
           >
@@ -166,7 +166,7 @@ Form.propTypes = {
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
   hasTrunfo: PropTypes.bool.isRequired,
-  isSaveButtonDisabled: PropTypes.bool.isRequired,
+  isLoginButtonDisabled: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
 };

@@ -18,7 +18,12 @@ class Card extends Component {
     return (
       <div className="cardDrop">
         <p data-testid="name-card">{ cardName }</p>
-        <img src={ cardImage } data-testid="image-card" alt={ cardName } />
+        <img
+          src={ cardImage }
+          data-testid="image-card"
+          width="350"
+          alt={ cardName }
+        />
         <p data-testid="description-card">{ cardDescription }</p>
         <p data-testid="attr1-card">{ cardAttr1 }</p>
         <p data-testid="attr2-card">{ cardAttr2 }</p>

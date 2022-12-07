@@ -2,7 +2,7 @@ import React from 'react';
 import { nanoid } from 'nanoid';
 import Form from './components/Form';
 import Card from './components/Card';
-// import Filter from './components/Filter';
+import Filter from './components/Filter';
 import Delete from './components/Delete';
 import './App.css';
 
@@ -21,7 +21,7 @@ class App extends React.Component {
       hasTrunfo: false,
       isSaveButtonDisabled: true,
       arrayOfCards: [],
-      // filtSearch: [],
+      filtSearch: [],
     };
   }
 
@@ -113,7 +113,7 @@ class App extends React.Component {
       this.setState({
         hasTrunfo: false,
         arrayOfCards: filt,
-        // filtSearch: filt,
+        filtSearch: filt,
       });
     }
     this.setState({
@@ -121,14 +121,13 @@ class App extends React.Component {
     });
   }
 
-  // filterSearch = ({ target }) => {
-  //   const { arrayOfCards } = this.state;
-  //   const cardFilter = arrayOfCards
-  //     .filter((item) => item.name.includes(target.value));
-  //   console.log(cardFilter);
-  //   this.setState({ filtSearch: cardFilter });
-  //   if (!target.value) this.setState({ filtSearch: [] });
-  // }
+  filterSearch = ({ target }) => {
+    const { arrayOfCards } = this.state;
+    const cardFilter = arrayOfCards
+      .filter((item) => item.name.includes(target.value));
+    this.setState({ filtSearch: cardFilter });
+    if (!target.value) this.setState({ filtSearch: [] });
+  }
 
   render() {
     const {
@@ -142,15 +141,14 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       isSaveButtonDisabled,
-      arrayOfCards,
-      // filtSearch,
+      filtSearch,
     } = this.state;
 
     return (
       <>
         <div className="formPreview">
           <div className="form">
-            <h1>Tryunfo</h1>
+            <h1>Super Trunfo</h1>
             <Form
               cardName={ cardName }
               cardDescription={ cardDescription }
@@ -182,10 +180,17 @@ class App extends React.Component {
           </div>
         </div>
 
-        <div className="cards">
+        <div>
+          <h4> Filtro de Busca</h4>
+          <Filter
+            filterSearch={ this.filterSearch }
+          />
           {
-            arrayOfCards.map((cards) => (
-              <div key={ nanoid() }>
+            !filtSearch.length ? '' : filtSearch.map((cards) => (
+              <div
+                className="cardSpace"
+                key={ nanoid() }
+              >
                 <Card
                   className="cards"
                   key={ cards.name }
@@ -214,35 +219,6 @@ class App extends React.Component {
 
 export default App;
 
-// {/* <div>
-//           <h4> Filtro de Busca</h4>
-//           <Filter
-//             filterSearch={ this.filterSearch }
-//           />
-//           {
-//             !filtSearch.length ? '' : filtSearch.map((cards) => (
-//               <div
-//                 className="cardSpace"
-//                 key={ nanoid() }
-//               >
-//                 <Card
-//                   className="cards"
-//                   key={ cards.name }
-//                   cardName={ cards.name }
-//                   cardDescription={ cards.description }
-//                   cardAttr1={ cards.attr1 }
-//                   cardAttr2={ cards.attr2 }
-//                   cardAttr3={ cards.attr3 }
-//                   cardImage={ cards.image }
-//                   cardRare={ cards.rare }
-//                   cardTrunfo={ cards.trunfo }
-//                   onDeleteButtonClick={ this.onDeleteButtonClick }
-//                 />
-//                 <Delete
-//                   deleteButton={ this.deleteButton }
-//                   cardName={ cards.name }
-//                 />
-//               </div>
-//             ))
-//           }
-//         </div> */}
+// https://hips.hearstapps.com/hmg-prod/images/2021-bmw-m5-competition-1146-1625696565.jpg?crop=0.547xw:0.461xh;0.164xw,0.490xh&resize=2048:*
+// https://images3.alphacoders.com/883/883776.jpg
+// https://wallpaperaccess.com/full/5627543.jpg
